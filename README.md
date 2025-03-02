@@ -103,6 +103,194 @@ For any questions or suggestions, please reach out to us through:
 - GitHub Issues
 - [Project Website](https://boston-resource-connector-cjioym8iq-elena-jins-projects.vercel.app/)
 
+### Home Page
+Modern interface with quick access to all resources and services.
+
+### Resource Directory
+Searchable directory with categorized resources and filtering options.
+
+### Organization Registration
+Comprehensive form for organizations to join the platform.
+
+### Interactive Map
+Location-based resource discovery.
+
+## 🛠️ Technical Implementation
+
+### Frontend Architecture
+
+#### Next.js 14 App Router
+The project uses Next.js 14's new app router for improved performance and SEO:
+
+\`\`\`typescript
+// app/layout.tsx
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <ThemeProvider>
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}
+\`\`\`
+
+#### Component Architecture
+Components are built using TypeScript for type safety and better developer experience:
+
+\`\`\`typescript
+// Example of a typed component with shadcn/ui
+interface ResourceCardProps {
+  title: string
+  description: string
+  category: ResourceCategory
+  image?: string
+  link: string
+}
+
+export function ResourceCard({ 
+  title, 
+  description, 
+  category, 
+  image, 
+  link 
+}: ResourceCardProps) {
+  return (
+    <Card className="hover:shadow-lg transition-shadow">
+      {/* Component implementation */}
+    </Card>
+  )
+}
+\`\`\`
+
+#### Styling System
+Tailwind CSS with custom configurations:
+
+\`\`\`typescript
+// tailwind.config.js
+module.exports = {
+  content: ["./app/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "#7C3AED",
+          // ... color scale
+        }
+      }
+    }
+  }
+}
+\`\`\`
+
+#### Animation System
+Framer Motion for smooth transitions and interactions:
+
+\`\`\`typescript
+// Example of animated component
+export function AnimatedCard({ children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+\`\`\`
+
+### Key Features Implementation
+
+#### Form Handling
+Organization registration form with validation:
+
+\`\`\`typescript
+// Form state management with TypeScript
+interface FormData {
+  orgName: string
+  website: string
+  address: string
+  // ... other fields
+}
+
+const [formData, setFormData] = useState<FormData>({
+  orgName: "",
+  website: "",
+  address: "",
+  // ... initial state
+})
+
+const validateForm = (): boolean => {
+  // Validation logic
+  return true
+}
+\`\`\`
+
+#### Toast Notifications
+Using Sonner for user feedback:
+
+\`\`\`typescript
+// Toast implementation
+const { toast } = useToast()
+
+toast({
+  title: "Success",
+  description: "Operation completed successfully",
+  variant: "default"
+})
+\`\`\`
+
+#### Dark Mode Implementation
+Theme switching with next-themes:
+
+\`\`\`typescript
+// Theme toggle component
+export function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+  
+  return (
+    <Button
+      variant="ghost"
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+    >
+      <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+    </Button>
+  )
+}
+\`\`\`
+
+### UI Components
+Using shadcn/ui for consistent design:
+
+\`\`\`typescript
+// Example of custom button component
+export const Button = React.forwardRef<
+  HTMLButtonElement,
+  ButtonProps
+>(({ className, variant, size, ...props }, ref) => {
+  return (
+    <button
+      className={cn(
+        buttonVariants({ variant, size, className })
+      )}
+      ref={ref}
+      {...props}
+    />
+  )
+})
+\`\`\`
+
 ---
 
 Made with ❤️ for the Boston community 
