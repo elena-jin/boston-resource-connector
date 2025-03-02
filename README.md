@@ -103,18 +103,6 @@ For any questions or suggestions, please reach out to us through:
 - GitHub Issues
 - [Project Website](https://boston-resource-connector-cjioym8iq-elena-jins-projects.vercel.app/)
 
-### Home Page
-Modern interface with quick access to all resources and services.
-
-### Resource Directory
-Searchable directory with categorized resources and filtering options.
-
-### Organization Registration
-Comprehensive form for organizations to join the platform.
-
-### Interactive Map
-Location-based resource discovery.
-
 ## 🛠️ Technical Implementation
 
 ### Frontend Architecture
@@ -122,7 +110,7 @@ Location-based resource discovery.
 #### Next.js 14 App Router
 The project uses Next.js 14's new app router for improved performance and SEO:
 
-\`\`\`typescript
+```typescript
 // app/layout.tsx
 export default function RootLayout({
   children,
@@ -141,12 +129,12 @@ export default function RootLayout({
     </html>
   )
 }
-\`\`\`
+```
 
 #### Component Architecture
 Components are built using TypeScript for type safety and better developer experience:
 
-\`\`\`typescript
+```typescript
 // Example of a typed component with shadcn/ui
 interface ResourceCardProps {
   title: string
@@ -169,12 +157,12 @@ export function ResourceCard({
     </Card>
   )
 }
-\`\`\`
+```
 
 #### Styling System
 Tailwind CSS with custom configurations:
 
-\`\`\`typescript
+```typescript
 // tailwind.config.js
 module.exports = {
   content: ["./app/**/*.{ts,tsx}"],
@@ -189,12 +177,12 @@ module.exports = {
     }
   }
 }
-\`\`\`
+```
 
 #### Animation System
 Framer Motion for smooth transitions and interactions:
 
-\`\`\`typescript
+```typescript
 // Example of animated component
 export function AnimatedCard({ children }) {
   return (
@@ -207,14 +195,14 @@ export function AnimatedCard({ children }) {
     </motion.div>
   )
 }
-\`\`\`
+```
 
 ### Key Features Implementation
 
 #### Form Handling
 Organization registration form with validation:
 
-\`\`\`typescript
+```typescript
 // Form state management with TypeScript
 interface FormData {
   orgName: string
@@ -234,12 +222,12 @@ const validateForm = (): boolean => {
   // Validation logic
   return true
 }
-\`\`\`
+```
 
 #### Toast Notifications
 Using Sonner for user feedback:
 
-\`\`\`typescript
+```typescript
 // Toast implementation
 const { toast } = useToast()
 
@@ -248,12 +236,12 @@ toast({
   description: "Operation completed successfully",
   variant: "default"
 })
-\`\`\`
+```
 
 #### Dark Mode Implementation
 Theme switching with next-themes:
 
-\`\`\`typescript
+```typescript
 // Theme toggle component
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -268,12 +256,12 @@ export function ThemeToggle() {
     </Button>
   )
 }
-\`\`\`
+```
 
 ### UI Components
 Using shadcn/ui for consistent design:
 
-\`\`\`typescript
+```typescript
 // Example of custom button component
 export const Button = React.forwardRef<
   HTMLButtonElement,
@@ -289,7 +277,7 @@ export const Button = React.forwardRef<
     />
   )
 })
-\`\`\`
+```
 
 ---
 
